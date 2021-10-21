@@ -116,7 +116,7 @@ const ExpenseForm = (props) => {
     return (
         <div
         onClick={addExpenseButtonClickHandler}>
-            <button type="submit">add expense</button>
+            <button type="submit">Add New Expense</button>
         </div>
     )
 }
