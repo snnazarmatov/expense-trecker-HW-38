@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Expenses from './components/Expense/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
-
+//back end тен келген данный
 const INIT_STATE = [
   {
     id: 'e1',
@@ -27,14 +27,14 @@ const INIT_STATE = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
-];
+];//expense массивке жаны обьект кошулса return иштеп кайра гинерация болуш керек биздин учурда.Кантип аткарса болот?подем состояниени колдонобуз
 
 function App() {
-  const [expenses, setExpenses] = useState(INIT_STATE);
+  const [expenses, setExpenses] = useState(INIT_STATE);//баштапкы маани катары
 
   const addExpenseHandler = (expense) => {
     console.log(expense);
-
+//setExpenses чакырабыз анкени состояниени озгортуп жатабыз prevExpense callback функция тузуп акыркы маанини алатурган,и возвращаем массив жаны келген expense жа prevExpense мурдагы эски массивди чогултуп башынан жаны массивди кайтарат. 
     setExpenses( prevExpenses => {
       return [expense, ...prevExpenses]
     })
@@ -45,6 +45,7 @@ function App() {
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
+    
   );
 }
 

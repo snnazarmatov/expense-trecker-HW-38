@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-    // console.log(props);
+    // console.log(props);деп чыгарып корсок бизге обьект чыгарып берет
     //{onSaveExpenseData: () => {} } 
 
 // ***************************
@@ -31,14 +31,14 @@ const ExpenseForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();// чтобы предотвратить перезагрузку страницы, поскольку форма отправки перезагружает страницу по умолчанию
-        let expenseData = {
+        let data = {
             title: enteredTitle,
             amount: enteredAmount,
             date: new Date(enteredDate),
         }
         // отправляем данные формы как объект в NewExpense.js по мере обновления там нового массива расходов
         //1st STEP
-        props.onSaveExpenseData(expenseData);
+        props.onSaveExpenseData(data);//submitHandler деген функциянын ичинде чакырып жатабыз
 
         //clear the form
         setEnteredTitle('');
@@ -75,6 +75,7 @@ const ExpenseForm = (props) => {
                         type="text"
                         onChange={titleChangeHandler}
                         value={enteredTitle}
+                        required
                     />
                 </div>
                 <div className="new-expense__control">
@@ -85,7 +86,7 @@ const ExpenseForm = (props) => {
                         step='0.01'
                         onChange={amountChangeHandler}
                         value={enteredAmount}
-
+                        required
                     />
                 </div>
                 <div className="new-expense__control">
@@ -96,6 +97,7 @@ const ExpenseForm = (props) => {
                         max="2022-12-21"
                         onChange={dateChangeHandler}
                         value={enteredDate}
+                        required
                     />
                 </div>
             </div>

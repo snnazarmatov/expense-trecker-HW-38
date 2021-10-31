@@ -15,13 +15,16 @@ const ExpensesChart = props => {
         {label:"Oct", value: 0},
         {label:"Nov", value: 0},
         {label:"Dec", value: 0},
+        //кайсы айда канча расход кеткен болсо сразу value да сакталат
     ]
-
+//каждый expense итарация болот
     for (const expense of props.items) {
-        const expenseMonth = expense.date.getMonth() // January => 0
+        const expenseMonth = expense.date.getMonth() // January => 0 метод getMonth() возвращает месяц указанной даты по местному времени нумерация месяцев начинается с нуля для первого месяца в году.
         chartDataPoints[expenseMonth].value += expense.amount;
+        //chartDataPoints кайрылып туруп массив аркылуу[expenseMonth бул айларды сактайт] берсек (chartDataPoints[expenseMonth]бул chartDataPoints[0]дегени тоист январь анан биз ошол айдын value сун алабыз ) += expense.amount;бул деген ар биринин стоимостун алып туруп value топтоп коюуп жатабыз. демек биз диагрммабыздын основной логикасын туздук. эми дайыма диагрмма чыгып туруш учун chart ка кайтабыз.  
+        console.log(expenseMonth.value);
     }
-
+//{chartDataPoints}ту dataPoints деп Chart ка берип жатабыз
     return <Chart dataPoints={chartDataPoints} />
 
 }
